@@ -1,0 +1,93 @@
+/**
+ * Definition for singly-linked list.
+ * public class ListNode 
+     {
+ *     public int val;
+ *     public ListNode next;
+
+ *     public ListNode(int val=0, ListNode next=null) 
+        {
+ *         this.val = val;
+ *         this.next = next;
+ *      }
+ *   }
+ */
+public class Solution 
+{
+
+    //Huvudsakliga problem är att jag inte får styr på C# objekts is passed by reference. 
+    //vad jag vet så om man skriver head2 = head; head2 = head2.next; då blir head == head.next; (shallow copy)
+    //lösningarna som lämnats in beter sig dock som att varje gång dom gör en ny object så blir den en deep copy av orginal head. Makes no sence
+    //med ovan sagt skulle jag vilja göra deep copys av linked list varje gång jag behöver en ny.
+
+    public bool IsPalindrome(ListNode head) 
+    {
+        
+
+        bool IsPalindrome = false;
+
+    ListNode first = head;
+    ListNode runner = head;
+    int ListNodeLength = 0;
+
+//counter för att få ut linked list längd
+    while(runner.next!=null)
+    {
+        runner = runner.next;
+        ListNodeLength++;
+    } 
+
+    //försökte göra en deep copy
+    
+ListNode runner2=head; //ny runner, för gamla är förbrukad
+ListNode head2= new ListNode();
+ListNode head3=head2; //ny head för att inte förlora första objektet
+    while(runner2.next!=null)
+    {
+        head2.val=runner2.val;//här är något problem, runner2.val är null!?
+        head2.next=runner2.next;
+        head2=head2.next;
+        runner2=runner2.next;
+    }
+
+//reverse linked list, kan följa och förstå koden, men hade aldrig kommit påden själv
+    ListNode prev = null;
+    ListNode curr = head2;
+    ListNode next = null;
+
+    while(curr != null)
+    {
+        next=curr.next;
+        curr.next=prev;
+        prev=curr;
+        curr=next;
+    }
+    
+    ListNode mirrornode = prev;
+
+//jämföra innehåll
+    if(ListNodeLength>0)
+    {
+    for(int i = 0; i <= ListNodeLength/2; i++)
+    {
+        if(head3.val == mirrornode.val)
+        {
+            IsPalindrome = true;
+        }
+        else 
+        {
+            IsPalindrome = false;
+            return IsPalindrome;
+        }   
+
+       head3 = head3.next;
+        mirrornode = mirrornode.next;   
+        
+    }
+    }
+    else 
+    IsPalindrome = true;
+    
+    return IsPalindrome;
+    }
+}
