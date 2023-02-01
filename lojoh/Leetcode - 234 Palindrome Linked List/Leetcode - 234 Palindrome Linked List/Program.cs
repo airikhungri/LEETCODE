@@ -1,6 +1,6 @@
 ﻿using Leetcode___234_Palindrome_Linked_List;
 
-bool IsPalindrome1(ListNode head)
+bool IsPalindrome_QueueStackSolution(ListNode head)
 {
     Stack<int> stack = new();
     Queue<int> queue = new();
@@ -24,7 +24,7 @@ bool IsPalindrome1(ListNode head)
     return true;
 }
 
-bool IsPalindrome2(ListNode head)
+bool IsPalindrome_VectorSolution(ListNode head)
 {
     var list = new List<int>();
     var node = head;
@@ -53,38 +53,31 @@ ListNode DeepCopy(ListNode node)
         next = DeepCopy(node.next)
     };
 }
-bool JoelIsPalindrome(ListNode head)
+bool IsPalindrome_ReverseEntireLinkedListSolution(ListNode head)
 {
     int listNodeLength = 0;
-    ListNode headNode = DeepCopy(head);
-    ListNode runner1 = DeepCopy(head);
-    ListNode runner2 = DeepCopy(head);
+    ListNode runner = DeepCopy(head);
 
-    // Count length of LinkedList
-    while (runner1 != null)
-    {
-        runner1 = runner1.next;
-        listNodeLength++;
-    }
-
-    // Make a reversed version of LinkedList
+    // Make a reversed version of LinkedList and count listlength
     ListNode prev = null;
-    while (runner2 != null)
+    while (runner != null)
     {
-        ListNode next_node = runner2.next;
-        runner2.next = prev;
-        prev = runner2;
-        runner2 = next_node;
+        ListNode next_node = runner.next;
+        runner.next = prev;
+        prev = runner;
+        runner = next_node;
+
+        listNodeLength++;
     }
 
     int count = listNodeLength;
     while (count > listNodeLength / 2)
     {
-        if (headNode.val != prev.val)
+        if (head.val != prev.val)
         {
             return false;
         }
-        headNode = headNode.next;
+        head = head.next;
         prev = prev.next;
 
         count--;
@@ -130,27 +123,27 @@ Console.WriteLine("=== IsPalindrome1 ===");
 Console.WriteLine("| Time Complexity: O(1.5n)");
 Console.WriteLine("| Space Complexity: O(2n)");
 Console.WriteLine("=====================");
-Console.WriteLine(IsPalindrome1(head0));
-Console.WriteLine(IsPalindrome1(head1));
-Console.WriteLine(IsPalindrome1(head2));
+Console.WriteLine(IsPalindrome_QueueStackSolution(head0));
+Console.WriteLine(IsPalindrome_QueueStackSolution(head1));
+Console.WriteLine(IsPalindrome_QueueStackSolution(head2));
 
 Console.WriteLine();
 Console.WriteLine("=== IsPalindrome2 ===");
 Console.WriteLine("| Time Complexity: O(1.5n)");
 Console.WriteLine("| Space Complexity: O(n)");
 Console.WriteLine("=====================");
-Console.WriteLine(IsPalindrome2(head0));
-Console.WriteLine(IsPalindrome2(head1));
-Console.WriteLine(IsPalindrome2(head2));
+Console.WriteLine(IsPalindrome_VectorSolution(head0));
+Console.WriteLine(IsPalindrome_VectorSolution(head1));
+Console.WriteLine(IsPalindrome_VectorSolution(head2));
 
 Console.WriteLine();
 Console.WriteLine("=== JoelIsPalindrome ===");
 Console.WriteLine("| Time Complexity: O(?)");
 Console.WriteLine("| Space Complexity: O(?)");
 Console.WriteLine("=====================");
-Console.WriteLine(JoelIsPalindrome(head0));
-Console.WriteLine(JoelIsPalindrome(head1));
-Console.WriteLine(JoelIsPalindrome(head2));
+Console.WriteLine(IsPalindrome_ReverseEntireLinkedListSolution(head0));
+Console.WriteLine(IsPalindrome_ReverseEntireLinkedListSolution(head1));
+Console.WriteLine(IsPalindrome_ReverseEntireLinkedListSolution(head2));
 
 
 
