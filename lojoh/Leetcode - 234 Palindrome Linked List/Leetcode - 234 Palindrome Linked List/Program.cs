@@ -121,37 +121,37 @@ heads.Add(new ListNode(
 
 
 
-Console.WriteLine("=== IsPalindrome1 ===");
+Console.WriteLine($"=== {nameof(IsPalindrome_QueueStackSolution)} ===");
 Console.WriteLine("| Time Complexity: O(1.5n)");
 Console.WriteLine("| Space Complexity: O(2n)");
 Console.WriteLine("=====================");
 
 foreach (ListNode head in heads)
 {
-    Console.WriteLine(head);
+    Console.WriteLine(IsPalindrome_QueueStackSolution(head));
 }
 
 
 Console.WriteLine();
-Console.WriteLine("=== IsPalindrome2 ===");
+Console.WriteLine($"=== {nameof(IsPalindrome_VectorSolution)} ===");
 Console.WriteLine("| Time Complexity: O(1.5n)");
 Console.WriteLine("| Space Complexity: O(n)");
 Console.WriteLine("=====================");
 
 foreach (ListNode head in heads)
 {
-    Console.WriteLine(head);
+    Console.WriteLine(IsPalindrome_VectorSolution(head));
 }
 
 Console.WriteLine();
-Console.WriteLine("=== JoelIsPalindrome ===");
+Console.WriteLine($"=== {nameof(IsPalindrome_ReverseEntireLinkedListSolution)} ===");
 Console.WriteLine("| Time Complexity: O(?)");
 Console.WriteLine("| Space Complexity: O(?)");
 Console.WriteLine("=====================");
 
 foreach (ListNode head in heads)
 {
-    Console.WriteLine(head);
+    Console.WriteLine(IsPalindrome_ReverseEntireLinkedListSolution(head));
 }
 
 
