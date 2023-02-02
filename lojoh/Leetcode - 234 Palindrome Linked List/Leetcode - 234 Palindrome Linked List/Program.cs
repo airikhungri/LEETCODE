@@ -1,6 +1,6 @@
 ﻿using Leetcode___234_Palindrome_Linked_List;
 
-bool IsPalindrome1(ListNode head)
+bool IsPalindromeStackQueue(ListNode head)
 {
     Stack<int> stack = new();
     Queue<int> queue = new();
@@ -24,7 +24,7 @@ bool IsPalindrome1(ListNode head)
     return true;
 }
 
-bool IsPalindrome2(ListNode head)
+bool IsPalindromeVector(ListNode head)
 {
     var list = new List<int>();
     var node = head;
@@ -53,7 +53,7 @@ ListNode DeepCopy(ListNode node)
         next = DeepCopy(node.next)
     };
 }
-bool JoelIsPalindrome(ListNode head)
+bool IsPalindromeReverseEntireLinkedList(ListNode head)
 {
     int listNodeLength = 0;
     ListNode headNode = DeepCopy(head);
@@ -92,9 +92,9 @@ bool JoelIsPalindrome(ListNode head)
     return true;
 }
 
-
+List<ListNode> heads = new List<ListNode>();
 // TESTDATA BELOW
-ListNode head0 = new ListNode(
+heads.Add(new ListNode(
     1,
     new ListNode(
         2,
@@ -102,9 +102,9 @@ ListNode head0 = new ListNode(
             3,
             new ListNode(
                 4,
-                null))));
+                null)))));
 
-ListNode head1 = new ListNode(
+heads.Add(new ListNode(
     0,
     new ListNode(
         1,
@@ -112,9 +112,11 @@ ListNode head1 = new ListNode(
             1,
             new ListNode(
                 0,
-                null))));
+                null)))));
 
-ListNode head2 = new ListNode(
+
+
+heads.Add(new ListNode(
     0,
     new ListNode(
         1,
@@ -122,7 +124,7 @@ ListNode head2 = new ListNode(
             1,
             new ListNode(
                 1,
-                null))));
+                null)))));
 
 
 
@@ -130,27 +132,34 @@ Console.WriteLine("=== IsPalindrome1 ===");
 Console.WriteLine("| Time Complexity: O(1.5n)");
 Console.WriteLine("| Space Complexity: O(2n)");
 Console.WriteLine("=====================");
-Console.WriteLine(IsPalindrome1(head0));
-Console.WriteLine(IsPalindrome1(head1));
-Console.WriteLine(IsPalindrome1(head2));
+
+foreach (ListNode head in heads)
+{
+    Console.WriteLine(head);
+}
+
 
 Console.WriteLine();
 Console.WriteLine("=== IsPalindrome2 ===");
 Console.WriteLine("| Time Complexity: O(1.5n)");
 Console.WriteLine("| Space Complexity: O(n)");
 Console.WriteLine("=====================");
-Console.WriteLine(IsPalindrome2(head0));
-Console.WriteLine(IsPalindrome2(head1));
-Console.WriteLine(IsPalindrome2(head2));
+
+foreach (ListNode head in heads)
+{
+    Console.WriteLine(head);
+}
 
 Console.WriteLine();
 Console.WriteLine("=== JoelIsPalindrome ===");
 Console.WriteLine("| Time Complexity: O(?)");
 Console.WriteLine("| Space Complexity: O(?)");
 Console.WriteLine("=====================");
-Console.WriteLine(JoelIsPalindrome(head0));
-Console.WriteLine(JoelIsPalindrome(head1));
-Console.WriteLine(JoelIsPalindrome(head2));
+
+foreach (ListNode head in heads)
+{
+    Console.WriteLine(head);
+}
 
 
 
